@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>jrl-dynamics</name>
+  <version>0.1.0</version>
+  <description>The jrl-dynamics package</description>
+
+  <maintainer email="hilario@todo.todo">hilario</maintainer>
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>sot_cmake</build_depend>
+  <build_depend>jrl-mal</build_depend>
+  <build_depend>abstract-robot-dynamics</build_depend>
+
+</package>
