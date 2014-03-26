@@ -27,10 +27,13 @@
 #
 
 
-cmake_minimum_required(VERSION 2.6)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
 
-INCLUDE(cmake/base.cmake)
-INCLUDE(cmake/cpack.cmake)
+find_package(catkin REQUIRED COMPONENTS  sot_cmake jrl-mal abstract-robot-dynamics)
+include_directories(${catkin_INCLUDE_DIRS})
+
+INCLUDE(${SOT_CMAKE_DIR}/base.cmake)
+INCLUDE(${SOT_CMAKE_DIR}/cpack.cmake)
 
 # name of the project
 SET(PROJECT_NAME jrl-dynamics)
@@ -60,9 +63,7 @@ include/jrl/dynamics/geometricdata.hh
 
 SETUP_PROJECT()
 
-# Dependencies
-ADD_REQUIRED_DEPENDENCY("jrl-mal >= 1.9.0")
-ADD_REQUIRED_DEPENDENCY("abstract-robot-dynamics >= 1.16")
+catkin_package()
 
 INCLUDE(CheckFunctionExists)
 CHECK_FUNCTION_EXISTS("getline" HAVE_GETLINE)
@@ -76,9 +77,11 @@ ELSE(HAVE_GETLINE_PTR)
 ENDIF(HAVE_GETLINE_PTR)
 
 CONFIGURE_FILE(
-	${CMAKE_SOURCE_DIR}/src/private/dynamicsGetLine.h.cmake
-	${CMAKE_BINARY_DIR}/src/private/dynamicsGetLine.h
+	${CMAKE_CURRENT_SOURCE_DIR}/src/private/dynamicsGetLine.h.cmake
+	${CMAKE_CURRENT_BINARY_DIR}/src/private/dynamicsGetLine.h
 )
+
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/src/private)
 
 # Optimisation flags when building with RELEASE
 #----------------------------------------------
@@ -98,11 +101,11 @@ IF(CMAKE_BUILD_TYPE MATCHES "DEBUG")
 ENDIF(CMAKE_BUILD_TYPE MATCHES "DEBUG")
 
 # Add dependency towards the library in the pkg-config file.
-PKG_CONFIG_APPEND_LIBS("jrl-dynamics")
+#PKG_CONFIG_APPEND_LIBS("jrl-dynamics")
 
 #add_subdirectory(include)
 add_subdirectory(src)
-add_subdirectory(unitTesting)
+#add_subdirectory(unitTesting)
 add_subdirectory(tools)
 
 SETUP_PROJECT_FINALIZE()
