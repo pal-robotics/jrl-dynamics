@@ -63,7 +63,10 @@ include/jrl/dynamics/geometricdata.hh
 
 SETUP_PROJECT()
 
-catkin_package()
+catkin_package(
+  INCLUDE_DIRS include
+  CATKIN_DEPENDS abstract-robot-dynamics
+)
 
 INCLUDE(CheckFunctionExists)
 CHECK_FUNCTION_EXISTS("getline" HAVE_GETLINE)

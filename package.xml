@@ -13,4 +13,6 @@
   <build_depend>jrl-mal</build_depend>
   <build_depend>abstract-robot-dynamics</build_depend>
 
+  <run_depend>abstract-robot-dynamics</run_depend>
+
 </package>
