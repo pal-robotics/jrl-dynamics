@@ -1,3 +1,4 @@
+
 /*
  * Copyright 2010,
  *
@@ -72,7 +73,7 @@ namespace dynamicsJRLJapan
     /*! Texture Transform */
     TextureTransform::TextureTransform()
     {
-      center[0] = center[1] = center[2] = 0.0;
+      center[0] = center[1] = 0.0;
       rotation = 0.0;
       scale[0] = scale[1] = 1.0;
       translation[0] = 0.0;
