@@ -30,7 +30,6 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8.3)
 
 find_package(catkin REQUIRED COMPONENTS  sot_cmake jrl-mal abstract-robot-dynamics)
-include_directories(${catkin_INCLUDE_DIRS})
 
 INCLUDE(${SOT_CMAKE_DIR}/base.cmake)
 INCLUDE(${SOT_CMAKE_DIR}/cpack.cmake)
@@ -65,8 +64,10 @@ SETUP_PROJECT()
 
 catkin_package(
   INCLUDE_DIRS include
-  CATKIN_DEPENDS abstract-robot-dynamics
+  CATKIN_DEPENDS abstract-robot-dynamics jrl-mal abstract-robot-dynamics
 )
+
+include_directories(include ${catkin_INCLUDE_DIRS})
 
 INCLUDE(CheckFunctionExists)
 CHECK_FUNCTION_EXISTS("getline" HAVE_GETLINE)
